@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
+	otelchimetric "github.com/KhalisaGhaizani/otelchi/metric"
 	"github.com/go-chi/chi/v5"
-	otelchimetric "github.com/riandyrn/otelchi/metric"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"

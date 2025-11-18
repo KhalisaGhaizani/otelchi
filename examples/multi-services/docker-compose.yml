@@ -16,11 +16,11 @@ services:
   
   front-svc:
     build:
-      # we set the build context to github.com/riandyrn/otelchi because we use relative 
+      # we set the build context to github.com/KhalisaGhaizani/otelchi because we use relative 
       # path in go.mod for otelchi library
       context: ../../
 
-      # since we are now on github.com/riandyrn/otelchi, the dockerfile location would be
+      # since we are now on github.com/KhalisaGhaizani/otelchi, the dockerfile location would be
       # in ./examples/multi-services/front-svc/Dockerfile
       dockerfile: ./examples/multi-services/front-svc/Dockerfile
     healthcheck:
@@ -42,11 +42,11 @@ services:
   
   back-svc:
     build:
-      # we set the build context to github.com/riandyrn/otelchi because we use relative 
+      # we set the build context to github.com/KhalisaGhaizani/otelchi because we use relative 
       # path in go.mod for otelchi library
       context: ../../
 
-      # since we are now on github.com/riandyrn/otelchi, the dockerfile location would be
+      # since we are now on github.com/KhalisaGhaizani/otelchi, the dockerfile location would be
       # in ./examples/multi-services/back-svc/Dockerfile
       dockerfile: ./examples/multi-services/back-svc/Dockerfile
     healthcheck:

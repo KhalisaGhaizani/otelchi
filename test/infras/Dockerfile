@@ -14,7 +14,7 @@ ENV PATH="/root/.gobrew/current/bin:/root/.gobrew/bin:$PATH"
 RUN curl -sL https://raw.githubusercontent.com/kevincobain2000/gobrew/v1.10.11/git.io.sh | bash
 
 # Set Working Directory
-WORKDIR /go/src/github.com/riandyrn/otelchi
+WORKDIR /go/src/github.com/KhalisaGhaizani/otelchi
 
 # Install Multiple Go Versions
 ARG GO_VERSIONS

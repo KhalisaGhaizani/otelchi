@@ -1,12 +1,12 @@
-module github.com/riandyrn/otelchi/examples/basic
+module github.com/KhalisaGhaizani/otelchi/examples/basic
 
 go 1.22.0
 
-replace github.com/riandyrn/otelchi => ../../
+replace github.com/KhalisaGhaizani/otelchi => ../../
 
 require (
 	github.com/go-chi/chi/v5 v5.1.0
-	github.com/riandyrn/otelchi v0.12.2
+	github.com/KhalisaGhaizani/otelchi v0.12.2
 	go.opentelemetry.io/otel v1.34.0
 	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.34.0
 	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.34.0

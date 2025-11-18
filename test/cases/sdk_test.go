@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"testing"
 
+	"github.com/KhalisaGhaizani/otelchi"
 	"github.com/go-chi/chi/v5"
 	"github.com/gorilla/websocket"
-	"github.com/riandyrn/otelchi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/otel/attribute"

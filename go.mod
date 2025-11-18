@@ -1,4 +1,4 @@
-module github.com/riandyrn/otelchi
+module github.com/KhalisaGhaizani/otelchi
 
 go 1.22.0
 

@@ -6,9 +6,9 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/KhalisaGhaizani/otelchi/version"
 	"github.com/felixge/httpsnoop"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi/version"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
@@ -21,7 +21,7 @@ import (
 )
 
 const (
-	tracerName = "github.com/riandyrn/otelchi"
+	tracerName = "github.com/KhalisaGhaizani/otelchi"
 )
 
 func newTracer(tp trace.TracerProvider) trace.Tracer {
@@ -235,7 +235,7 @@ func addPrefixToSpanName(shouldAdd bool, prefix, spanName string) string {
 }
 
 // isWebSocketRequest checks if an HTTP request is a WebSocket upgrade request
-// Fix: https://github.com/riandyrn/otelchi/issues/66
+// Fix: https://github.com/KhalisaGhaizani/otelchi/issues/66
 func isWebSocketRequest(r *http.Request) bool {
 	// Check if the Connection header contains "Upgrade"
 	connectionHeader := r.Header.Get("Connection")

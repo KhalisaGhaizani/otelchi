@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KhalisaGhaizani/otelchi/metric"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi/metric"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"

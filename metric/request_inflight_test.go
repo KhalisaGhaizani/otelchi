@@ -6,8 +6,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/KhalisaGhaizani/otelchi/metric"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi/metric"
 	"github.com/stretchr/testify/require"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"

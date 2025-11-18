@@ -77,8 +77,8 @@ func WithChiRoutes(routes chi.Routes) Option {
 //
 // See following threads for details:
 //
-// - https://github.com/riandyrn/otelchi/pull/3#issuecomment-1005883910
-// - https://github.com/riandyrn/otelchi/issues/6#issuecomment-1034461912
+// - https://github.com/KhalisaGhaizani/otelchi/pull/3#issuecomment-1005883910
+// - https://github.com/KhalisaGhaizani/otelchi/issues/6#issuecomment-1034461912
 func WithRequestMethodInSpanName(isActive bool) Option {
 	return optionFunc(func(cfg *config) {
 		cfg.requestMethodInSpanName = isActive

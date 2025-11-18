@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/KhalisaGhaizani/otelchi"
+	otelchimetric "github.com/KhalisaGhaizani/otelchi/metric"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi"
-	otelchimetric "github.com/riandyrn/otelchi/metric"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/propagation"

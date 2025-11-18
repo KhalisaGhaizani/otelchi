@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/KhalisaGhaizani/otelchi"
+	"github.com/KhalisaGhaizani/otelchi/examples/multi-services/utils"
+	otelchimetric "github.com/KhalisaGhaizani/otelchi/metric"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi"
-	"github.com/riandyrn/otelchi/examples/multi-services/utils"
-	otelchimetric "github.com/riandyrn/otelchi/metric"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"

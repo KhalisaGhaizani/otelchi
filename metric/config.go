@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"sync"
 
+	"github.com/KhalisaGhaizani/otelchi/version"
 	"github.com/felixge/httpsnoop"
 	"github.com/go-chi/chi/v5"
-	"github.com/riandyrn/otelchi/version"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	otelmetric "go.opentelemetry.io/otel/metric"
@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	ScopeName = "github.com/riandyrn/otelchi/metric"
+	ScopeName = "github.com/KhalisaGhaizani/otelchi/metric"
 )
 
 // BaseConfig is used to configure the metrics middleware.

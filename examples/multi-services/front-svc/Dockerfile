@@ -1,13 +1,13 @@
 FROM golang:1.22-alpine3.20
-WORKDIR /go/src/github.com/riandyrn/otelchi
+WORKDIR /go/src/github.com/KhalisaGhaizani/otelchi
 
 RUN apk --no-cache add curl
 COPY . .
 
-WORKDIR /go/src/github.com/riandyrn/otelchi/examples/multi-services
+WORKDIR /go/src/github.com/KhalisaGhaizani/otelchi/examples/multi-services
 RUN go mod download -x
 
-WORKDIR /go/src/github.com/riandyrn/otelchi/examples/multi-services/front-svc
+WORKDIR /go/src/github.com/KhalisaGhaizani/otelchi/examples/multi-services/front-svc
 RUN go build -o server
 
 ENTRYPOINT ["./server"]

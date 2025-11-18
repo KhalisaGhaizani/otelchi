@@ -101,6 +101,7 @@ type recordingResponseWriter struct {
 	writer       http.ResponseWriter
 	written      bool
 	writtenBytes int64
+	statusCode   int
 }
 
 var rrwPool = &sync.Pool{
@@ -113,22 +114,23 @@ func getRRW(writer http.ResponseWriter) *recordingResponseWriter {
 	rrw := rrwPool.Get().(*recordingResponseWriter)
 	rrw.written = false
 	rrw.writtenBytes = 0
+	rrw.statusCode = 200
 	rrw.writer = httpsnoop.Wrap(writer, httpsnoop.Hooks{
 		Write: func(next httpsnoop.WriteFunc) httpsnoop.WriteFunc {
 			return func(b []byte) (int, error) {
-				if !rrw.written {
-					rrw.written = true
-					rrw.writtenBytes += int64(len(b))
-				}
-				return next(b)
+				// count ALL bytes written
+				n, err := next(b)
+				rrw.writtenBytes += int64(n)
+
+				rrw.written = true
+				return n, err
 			}
 		},
 		WriteHeader: func(next httpsnoop.WriteHeaderFunc) httpsnoop.WriteHeaderFunc {
-			return func(statusCode int) {
-				if !rrw.written {
-					rrw.written = true
-				}
-				next(statusCode)
+			return func(code int) {
+				rrw.statusCode = code
+				rrw.written = true
+				next(code)
 			}
 		},
 	})

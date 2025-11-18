@@ -1,5 +1,8 @@
 # otelchi
 
+This fork adds "status code" and "outcome" attributes for mterics.
+the "outcome" attribute allows to easily filter by "success" or "failure".
+
 [![compatibility-test](https://github.com/KhalisaGhaizani/otelchi/actions/workflows/compatibility-test.yaml/badge.svg)](https://github.com/KhalisaGhaizani/otelchi/actions/workflows/compatibility-test.yaml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/KhalisaGhaizani/otelchi)](https://goreportcard.com/report/github.com/KhalisaGhaizani/otelchi)
 [![Documentation](https://godoc.org/github.com/KhalisaGhaizani/otelchi?status.svg)](https://pkg.go.dev/mod/github.com/KhalisaGhaizani/otelchi)

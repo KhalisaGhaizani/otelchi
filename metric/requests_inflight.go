@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"go.opentelemetry.io/otel/attribute"
 	otelmetric "go.opentelemetry.io/otel/metric"
 )
 
@@ -27,17 +28,34 @@ func NewRequestInFlight(cfg BaseConfig) func(next http.Handler) http.Handler {
 
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			// define metric attributes
-			attrs := otelmetric.WithAttributes(cfg.AttributesFunc(r)...)
+			// build attributes without status_code or outcome yet
+			baseAttrs := cfg.AttributesFunc(r)
 
-			// increase the number of requests in flight
-			counter.Add(r.Context(), 1, attrs)
+			// get recording response writer
+			rrw := getRRW(w)
+			defer putRRW(rrw)
 
-			// execute next http handler
-			next.ServeHTTP(w, r)
+			// increment inflight
+			counter.Add(r.Context(), 1,
+				otelmetric.WithAttributes(baseAttrs...),
+			)
 
-			// decrease the number of requests in flight
-			counter.Add(r.Context(), -1, attrs)
+			next.ServeHTTP(rrw.writer, r)
+
+			// determine success/failure
+			outcome := getOutcome(rrw.statusCode)
+
+			// final attributes (with status_code and outcome)
+			finalAttrs := append(
+				baseAttrs,
+				attribute.Int("http.status_code", rrw.statusCode),
+				attribute.String("http.response_outcome", outcome),
+			)
+
+			// decrement inflight
+			counter.Add(r.Context(), -1,
+				otelmetric.WithAttributes(finalAttrs...),
+			)
 		})
 	}
 }

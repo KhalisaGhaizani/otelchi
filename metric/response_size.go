@@ -35,10 +35,7 @@ func NewResponseSizeBytes(cfg BaseConfig) func(next http.Handler) http.Handler {
 			next.ServeHTTP(rrw.writer, r)
 
 			// determine success/failure
-			outcome := "success"
-			if rrw.statusCode >= 500 {
-				outcome = "failure"
-			}
+			outcome := getOutcome(rrw.statusCode)
 
 			// record the response size
 			histogram.Record(

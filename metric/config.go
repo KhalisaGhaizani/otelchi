@@ -15,6 +15,8 @@ import (
 
 const (
 	ScopeName = "github.com/KhalisaGhaizani/otelchi/metric"
+	Success   = "success"
+	Failure   = "failure"
 )
 
 // BaseConfig is used to configure the metrics middleware.
@@ -140,4 +142,11 @@ func getRRW(writer http.ResponseWriter) *recordingResponseWriter {
 func putRRW(rrw *recordingResponseWriter) {
 	rrw.writer = nil
 	rrwPool.Put(rrw)
+}
+
+func getOutcome(statusCode int) string {
+	if statusCode >= 500 {
+		return Failure
+	}
+	return Success
 }

@@ -35,11 +35,11 @@ func NewRequestDurationMillis(cfg BaseConfig) func(next http.Handler) http.Handl
 			// capture the start time of the request
 			startTime := time.Now()
 
+			// execute next http handler
+			next.ServeHTTP(rrw.writer, r)
+
 			// determine success/failure
 			outcome := getOutcome(rrw.statusCode)
-
-			// execute next http handler
-			next.ServeHTTP(w, r)
 
 			// record the request duration
 			duration := time.Since(startTime)
